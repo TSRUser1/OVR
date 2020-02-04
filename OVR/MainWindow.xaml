@@ -1,0 +1,70 @@
+﻿<Window x:Class="OVR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OVR"
+        mc:Ignorable="d"
+        Title="Volleyball" Height="613.757" Width="923.954">
+
+    <Grid Margin="0,0,0.333,-6.333">
+        <Frame x:Name="_mainFrame"/>
+        <Menu IsMainMenu="True" Margin="-2,0,2.333,-0.333">
+            <MenuItem Header="Database" Width="78">
+                <MenuItem x:Name="Connect" Header="Connect" Click="MnuNew_Click"></MenuItem>
+                <MenuItem x:Name="Disconnect" Header="Disconnect" Click="MnuClose_Click"></MenuItem>
+                <MenuItem x:Name="ConnectSettings" Header="ConnectSettings">
+                    <MenuItem x:Name="LocalServer" Header="LocalServer"></MenuItem>
+                    <MenuItem x:Name="CentralServer" Header="CentralServer"></MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="ImportAll" Header="ImporData" >
+                    <MenuItem x:Name="CountryData" Header="Country" Click="MnuImportData_Click"></MenuItem>
+                    <MenuItem x:Name="ParticipantData" Header="Participant"  Click="MnuImportDataParticipant_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="ExportData" Header="ExportData" Click="MnuExportData_Click"></MenuItem>
+                <MenuItem x:Name="Exit" Header="Exit"></MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="View">
+                <MenuItem x:Name="ViewEvents" Header="View Events" Click="MnuViewEvents_Click"></MenuItem>
+                <MenuItem x:Name="ViewContigent" Header="View Contigent" Click="MnuViewContigent_Click"></MenuItem>
+                <MenuItem x:Name="ViewVenues" Header="View Venues" Click="MnuViewVenues_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Setup">
+                <MenuItem x:Name="Contingents" Header="Contingents" Click="MnuContigents_Click"></MenuItem>
+                <MenuItem x:Name="Events" Header="Events" Click="MnuEvents_Click"></MenuItem>
+                <MenuItem x:Name="Series" Header="Series"></MenuItem>
+                <MenuItem x:Name="Venues" Header="Venues" Click="MnuVenues_Click"></MenuItem>
+                <MenuItem x:Name="Group" Header="Group"></MenuItem>
+                <MenuItem x:Name="Postition" Header="Postition"></MenuItem>
+                <MenuItem x:Name="Result" Header="Result"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Meet">
+                <MenuItem x:Name="Schedule" Header="Schedule" Click="MnuSchedule_Click"></MenuItem>
+                <MenuItem x:Name="Select_Event" Header="Select Event"  Click="MnuSelectEvent_Click"></MenuItem>
+                <MenuItem x:Name="Point_System" Header="Point System"></MenuItem>
+                <MenuItem x:Name="Meet_Properties" Header="Meet Properties"></MenuItem>
+
+
+            </MenuItem>
+            <MenuItem x:Name="Athletes" Header="Athletes">
+                <MenuItem x:Name="Participant" Header="Participant" Click="MnuParticpant_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Reports">
+                <MenuItem x:Name="Medals" Header="Medals">
+                    <MenuItem x:Name="Medals_Tally" Header="Medals_Tally"></MenuItem>
+                    <MenuItem x:Name="Medals_Audit" Header="Medals_Audit"></MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="Start_List" Header="Start_List"></MenuItem>
+                <MenuItem x:Name="Result_List" Header="Result_List"></MenuItem>
+                <MenuItem x:Name="League_Table" Header="League_Table"></MenuItem>
+                <MenuItem x:Name="Knock_Out_Chart" Header="Knock-Out-Chart"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Security"></MenuItem>
+            <MenuItem Header="Tools"></MenuItem>
+            <MenuItem Header="Help"></MenuItem>
+
+        </Menu>
+
+    </Grid>
+</Window>

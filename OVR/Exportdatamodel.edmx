@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TSRContigentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TSR_Contigent">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar(max)" />
+          <Property Name="CountryNameShort" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISOCode2" Type="nvarchar" MaxLength="10" />
+          <Property Name="ISOCode3" Type="nvarchar" MaxLength="10" />
+          <Property Name="FlagImageFilePath" Type="nvarchar(max)" />
+          <Property Name="IconFilePath" Type="nvarchar(max)" />
+          <Property Name="SmallIconFilePath" Type="nvarchar(max)" />
+          <Property Name="RegionID" Type="int" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TSRContigentModelStoreContainer">
+          <EntitySet Name="TSR_Contigent" EntityType="Self.TSR_Contigent" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TSRContigentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TSR_Contigent">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryNameShort" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISOCode2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ISOCode3" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="FlagImageFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IconFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SmallIconFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegionID" Type="Int32" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="TSREntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TSR_Contigent" EntityType="Self.TSR_Contigent" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TSRContigentModelStoreContainer" CdmEntityContainer="TSREntities1">
+          <EntitySetMapping Name="TSR_Contigent">
+            <EntityTypeMapping TypeName="TSRContigentModel.TSR_Contigent">
+              <MappingFragment StoreEntitySet="TSR_Contigent">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryNameShort" ColumnName="CountryNameShort" />
+                <ScalarProperty Name="ISOCode2" ColumnName="ISOCode2" />
+                <ScalarProperty Name="ISOCode3" ColumnName="ISOCode3" />
+                <ScalarProperty Name="FlagImageFilePath" ColumnName="FlagImageFilePath" />
+                <ScalarProperty Name="IconFilePath" ColumnName="IconFilePath" />
+                <ScalarProperty Name="SmallIconFilePath" ColumnName="SmallIconFilePath" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDateTime" ColumnName="ModifiedDateTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

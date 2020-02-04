@@ -1,0 +1,26 @@
+﻿<Page x:Class="OVR.ExportDatafromExcel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OVR"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ExportDatafromExcel">
+
+    <Grid>
+        <Button x:Name="btnSubmit" Content="TEST" HorizontalAlignment="Left" Margin="570,67,0,0" VerticalAlignment="Top" Width="75" Click="btnSubmit_Click"/>
+        <TextBox x:Name="txtFilePath"    
+                                         Width="400"     
+                                         Height="40"    
+                                         FontSize="14"      
+                                         HorizontalAlignment="Center"     
+                                         VerticalAlignment="Top"     
+                                         IsEnabled="true"     
+                                         BorderThickness="0"    
+                                         VerticalContentAlignment="Center"    
+                                         Padding="20,0,0,0"    
+                                         Background="Transparent"    
+                                         Foreground="Black" Margin="142,62,258,0" />
+    </Grid>
+</Page>

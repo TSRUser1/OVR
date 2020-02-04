@@ -1,0 +1,28 @@
+﻿<Page x:Class="OVR.ViewModule.ViewVenues"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OVR"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+        Background="DarkGray"
+      Title="ViewVenues">
+
+    <Grid>
+        <Label Content="View Venues" HorizontalAlignment="Left" Margin="28,19,0,0" VerticalAlignment="Top" FontSize="40"/>
+        <Label Content="Venue Name:" HorizontalAlignment="Left" Margin="24,91,0,0" VerticalAlignment="Top" Height="46" Width="185" FontSize="30"/>
+        <Button Content="Search" HorizontalAlignment="Left" Margin="458,95,0,0" VerticalAlignment="Top" Width="140" Height="48" FontSize="30" Click="BtnSearch_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="617,96,0,0" VerticalAlignment="Top" Width="116" Height="46" FontSize="30" Click="BtnCancel_Click"/>
+        <Label Content="Venue Name :" x:Name="lblvn" HorizontalAlignment="Left" Margin="80,198,0,0" VerticalAlignment="Top" Height="55" Width="170" FontSize="26" Visibility="Visible"/>
+        <Label Content="Location :" x:Name="lbllc" HorizontalAlignment="Left" Margin="130,244,0,0" VerticalAlignment="Top" Height="55" Width="130" FontSize="26" Visibility="Visible"/>
+        <Label Content="Country :"  x:Name="lblct" HorizontalAlignment="Left" Margin="136,288,0,0" VerticalAlignment="Top" Height="55" Width="122" FontSize="26" Visibility="Visible"/>
+        <Label Content="State :"  x:Name="lblst" HorizontalAlignment="Left" Margin="170,342,0,0" VerticalAlignment="Top" Height="55" Width="84" FontSize="26" Visibility="Visible"/>
+        <Label x:Name="lblVenuesName" Content="" HorizontalAlignment="Left" Margin="256,200,0,0" VerticalAlignment="Top" Height="55" Width="230" FontSize="26"/>
+        <Label x:Name="lblLocation" Content="" HorizontalAlignment="Left" Margin="256,244,0,0" VerticalAlignment="Top" Height="55" Width="230" FontSize="26"/>
+        <Label x:Name="lblCountry" Content="" HorizontalAlignment="Left" Margin="256,292,0,0" VerticalAlignment="Top" Height="55" Width="230" FontSize="26"/>
+        <Label x:Name="lblState" Content="" HorizontalAlignment="Left" Margin="256,352,0,0" VerticalAlignment="Top" Height="55" Width="230" FontSize="26"/>
+        <ComboBox x:Name="cboVenueName"  HorizontalAlignment="Left" Margin="219,94,0,0" VerticalAlignment="Top" Width="228" Height="45"/>
+
+    </Grid>
+</Page>

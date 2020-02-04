@@ -1,0 +1,26 @@
+﻿<Page x:Class="OVR.Venues"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OVR"
+      mc:Ignorable="d" 
+      Background="Gray"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Venues">
+
+    <Grid>
+        <Label Content="Venue" HorizontalAlignment="Left" Margin="38,21,0,0" VerticalAlignment="Top" Height="42" Width="136" FontSize="30"/>
+        <Label Content="Venue Name :" HorizontalAlignment="Left" Margin="133,110,0,0" VerticalAlignment="Top" Height="55" Width="170" FontSize="26"/>
+        <Label Content="Location :" HorizontalAlignment="Left" Margin="183,156,0,0" VerticalAlignment="Top" Height="55" Width="130" FontSize="26"/>
+        <Label Content="Country :" HorizontalAlignment="Left" Margin="189,200,0,0" VerticalAlignment="Top" Height="55" Width="122" FontSize="26"/>
+        <Label Content="State :" HorizontalAlignment="Left" Margin="223,254,0,0" VerticalAlignment="Top" Height="55" Width="84" FontSize="26"/>
+        <TextBox HorizontalAlignment="Left"  x:Name="txtVName" Height="39" Margin="310,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" RenderTransformOrigin="0.02,0.264"/>
+        <TextBox HorizontalAlignment="Left"  x:Name="txtLocation" Height="39" Margin="310,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="270" RenderTransformOrigin="0.02,0.264"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" Width="111" Height="48" FontSize="28" Click="BtnSubmit_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="546,335,0,0" VerticalAlignment="Top" Width="111" Height="48" FontSize="28" Click="BtnCancel_Click"/>
+        <ComboBox x:Name ="cboVenueCountry"  HorizontalAlignment="Left" Margin="312,212,0,0" VerticalAlignment="Top" Width="267" Height="41"/>
+        <ComboBox x:Name ="cboVenueState" HorizontalAlignment="Left" Margin="308,258,0,0" VerticalAlignment="Top" Width="272" Height="45"/>
+
+    </Grid>
+</Page>
