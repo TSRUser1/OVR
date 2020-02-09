@@ -25,6 +25,7 @@ namespace OVR
         SqlConnection sqlcon = null;
         public Venues()
         {
+            this.Name = "Venues";
             InitializeComponent();
             var x = ConfigurationManager.AppSettings["connectionString"];
             sqlcon = new SqlConnection(x);

@@ -31,7 +31,7 @@ namespace OVR
         SqlConnection sqlcon = null;
         public ImportData()
         {
-            var x = ConfigurationManager.AppSettings["connectionString"];
+            var x = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
 
             sqlcon = new SqlConnection(x);
             InitializeComponent();

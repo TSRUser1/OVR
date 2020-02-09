@@ -30,6 +30,8 @@ namespace OVR
             var x = ConfigurationManager.AppSettings["connectionString"];
             sqlcon = new SqlConnection(x);
 
+            this.Name = "Scheduler";
+
             //fillmonth();
             //fillyear();
             //fillday();
