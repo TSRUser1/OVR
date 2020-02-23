@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Configuration;
+using OVR.Service;
 
 namespace OVR
 {
@@ -27,8 +28,8 @@ namespace OVR
         //SqlConnection sqlcon = new SqlConnection(@"Data Source = LAPTOP-74F5FNT3\SQLEXPRESS; Initial Catalog=TSR; Integrated Security=true;");
         SqlConnection sqlcon = null;
 
-        private List<TabItem> _tabItems;
-        private TabItem _tabAdd;
+        public List<TabItem> _tabItems;
+        PageRenderService pageRenderService = new PageRenderService();
 
         public MainWindow()
         {
@@ -86,77 +87,77 @@ namespace OVR
         private void MnuContigents_Click(object sender, RoutedEventArgs e)
         {
             Contigent cg = new Contigent();
-            RenderPages(cg);
+            pageRenderService.RenderPages(cg, _tabItems, tabDynamic);
 
         }
 
 
         private void MnuEvents_Click(object sender, RoutedEventArgs e)
         {
-            Event ev = new Event();
-            RenderPages(ev);
+            EventListing ev = new EventListing();
+            pageRenderService.RenderPages(ev, _tabItems, tabDynamic);
 
         }
 
         private void MnuViewEvents_Click(object sender, RoutedEventArgs e)
         {
-            ViewEvent ve = new ViewEvent();
-            RenderPages(ve);
+            EventListing ve = new EventListing();
+            pageRenderService.RenderPages(ve, _tabItems, tabDynamic);
 
         }
         private void MnuSchedule_Click(object sender, RoutedEventArgs e)
         {
             Scheduler sh = new Scheduler();
-            RenderPages(sh);
+            pageRenderService.RenderPages(sh, _tabItems, tabDynamic);
 
         }
         private void MnuVenues_Click(object sender, RoutedEventArgs e)
         {
 
             Venues vn = new Venues();
-            RenderPages(vn);
+            pageRenderService.RenderPages(vn, _tabItems, tabDynamic);
         }
 
         private void MnuViewVenues_Click(object sender, RoutedEventArgs e)
         {
             ViewVenues vv = new ViewVenues();
-            RenderPages(vv);
+            pageRenderService.RenderPages(vv, _tabItems, tabDynamic);
 
         }
 
         private void MnuParticpant_Click(object sender, RoutedEventArgs e)
         {
             Participant pp = new Participant();
-            RenderPages(pp);
+            pageRenderService.RenderPages(pp, _tabItems, tabDynamic);
         }
 
         private void MnuViewContigent_Click(object sender, RoutedEventArgs e)
         {
             ViewContigent vc = new ViewContigent();
-            RenderPages(vc);
+            pageRenderService.RenderPages(vc, _tabItems, tabDynamic);
         }
 
         private void MnuImportData_Click(object sender, RoutedEventArgs e)
         {
             ImportData id = new ImportData();
-            RenderPages(id);
+            pageRenderService.RenderPages(id, _tabItems, tabDynamic);
         }
         private void MnuExportData_Click(object sender, RoutedEventArgs e)
         {
             ExportData ed = new ExportData();
-            RenderPages(ed);
+            pageRenderService.RenderPages(ed, _tabItems, tabDynamic);
         }
 
         private void MnuSelectEvent_Click(object sender, RoutedEventArgs e)
         {
             Select_Event se = new Select_Event();
-            RenderPages(se);
+            pageRenderService.RenderPages(se, _tabItems, tabDynamic);
         }
 
         private void MnuImportDataParticipant_Click(object sender, RoutedEventArgs e)
         {
             ImportParticipant ip = new ImportParticipant();
-            RenderPages(ip);
+            pageRenderService.RenderPages(ip, _tabItems, tabDynamic);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -204,20 +205,6 @@ namespace OVR
             }
 
 
-        }
-
-        private void RenderPages(object page)
-        {
-            int count = _tabItems.Count + 1;
-            var pageObject = page as Page;
-            string uniqueName = pageObject.Name + "_" + Guid.NewGuid().ToString().Replace("-","");
-            TabItem tabitem = new TabItem { Header = pageObject.Name + " " + count, Name = uniqueName };
-            Frame tabFrame = new Frame { Content = pageObject };
-            tabitem.Content = tabFrame;
-            tabitem.HeaderTemplate = tabDynamic.FindResource("TabHeader") as DataTemplate;
-            tabDynamic.Items.Add(tabitem);
-            tabDynamic.SelectedItem = tabitem;
-            _tabItems.Insert(count - 1, tabitem);
         }
     }
 }

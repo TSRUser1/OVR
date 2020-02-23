@@ -111,8 +111,6 @@ namespace OVR
         }
         private void BtnCancel_click(object sender, RoutedEventArgs e)
         {
-            MainWindow win = new MainWindow();
-            win.Show();//Open previouse page
             Window ev = (Window)this.Parent;
             ev.Close();
 

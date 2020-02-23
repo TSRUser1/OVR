@@ -149,9 +149,13 @@
       <DependentUpon>Contigent.xaml</DependentUpon>
     </Compile>
     <Compile Include="CSVLibraryAK.cs" />
+    <Compile Include="DataClass\EventsList.cs" />
     <Compile Include="DataClass\Contigent.cs" />
     <Compile Include="DataClass\Country.cs" />
     <Compile Include="DataClass\ParticipantData.cs" />
+    <Compile Include="EventListing.xaml.cs">
+      <DependentUpon>EventListing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExportData.cs" />
     <Compile Include="ExportData.xaml.cs">
       <DependentUpon>ExportData.xaml</DependentUpon>
@@ -195,7 +199,8 @@
     <Compile Include="Select_Event.xaml.cs">
       <DependentUpon>Select_Event.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service\Database.cs" />
+    <Compile Include="Service\PageRenderService.cs" />
+    <Compile Include="Service\DatabaseService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TabProperty.xaml.cs" />
     <Compile Include="TSR_Contigent.cs">
@@ -219,6 +224,10 @@
     <Page Include="Event.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventListing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="ExportData.xaml">
       <SubType>Designer</SubType>

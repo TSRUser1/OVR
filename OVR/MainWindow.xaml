@@ -32,7 +32,7 @@
             </MenuItem>
             <MenuItem Header="Setup">
                 <MenuItem x:Name="Contingents" Header="Contingents" Click="MnuContigents_Click"></MenuItem>
-                <MenuItem x:Name="Events" Header="Events" Click="MnuEvents_Click"></MenuItem>
+                <!--<MenuItem x:Name="Events" Header="Events" Click="MnuEvents_Click"></MenuItem>-->
                 <MenuItem x:Name="Series" Header="Series"></MenuItem>
                 <MenuItem x:Name="Venues" Header="Venues" Click="MnuVenues_Click"></MenuItem>
                 <MenuItem x:Name="Group" Header="Group"></MenuItem>
@@ -66,7 +66,7 @@
 
         </Menu>
         
-        <TabControl Name="tabDynamic" ItemsSource="{Binding}"  Margin="0,23,-0.333,29.333">
+        <TabControl Name="tabDynamic" ItemsSource="{Binding}"  Margin="0,23,-0.333,29.333" Padding="0">
             <TabControl.Resources>
                 <DataTemplate x:Key="TabHeader" DataType="TabItem">
                     <DockPanel>
