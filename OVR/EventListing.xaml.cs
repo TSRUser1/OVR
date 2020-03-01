@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -20,8 +21,7 @@ namespace OVR
     public partial class EventListing : Page
     {
         DatabaseService databaseService = new DatabaseService();
-       
-        DataTable eventDataTable = new DataTable();
+
         public EventListing()
         {
             InitializeComponent();
@@ -34,26 +34,19 @@ namespace OVR
             var startupEvent = " Select e.EventName, e.EventCode, s.SportName, case e.GenderId when 0 then 'Female' else 'Male' end as Gender," +
                                 "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID";
 
-            eventDataTable = databaseService.ExecuteSelectQuery(startupEvent);
+            var eventDataTable = databaseService.ExecuteSelectWithDapper(startupEvent);
 
             if (eventDataTable != null)
             {
-                List<EventsList> events = new List<EventsList>();
-                for (int i = 0; i < eventDataTable.Rows.Count; i++)
+                List<EventsList> events = eventDataTable.Select(c => new EventsList
                 {
-                    events.Add(new EventsList
-                    {
-                        EventName = eventDataTable.Rows[i]["EventName"].ToString(),
-                        EventCode = eventDataTable.Rows[i]["EventCode"].ToString(),
-                        SportName = eventDataTable.Rows[i]["SportName"].ToString(),
-                        Gender = eventDataTable.Rows[i]["Gender"].ToString(),
-                        Status = eventDataTable.Rows[i]["Status"].ToString()
-                    });
-                }
-                if (dataGrid.Items.Count > 0)
-                {
-                    dataGrid.ItemsSource = null;
-                }
+                    Gender = c.Gender,
+                    EventName = c.EventName,
+                    Status = c.Status,
+                    EventCode = c.EventCode,
+                    SportName = c.SportName
+                }).ToList();
+
                 dataGrid.ItemsSource = events;
             }
 
@@ -64,31 +57,25 @@ namespace OVR
             if (!string.IsNullOrEmpty(txtEventNameSearch.Text))
             {
                 var startupEvent = " Select e.EventName, e.EventCode, s.SportName, case e.GenderId when 0 then 'Female' else 'Male' end as Gender," +
-                                "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID "+
-                                "where s.sportname like'%'+@sportName+'%' or e.EventName like '%'+@sportName+'%'";
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-                sqlParameters.Add(new SqlParameter
-                {
-                   ParameterName ="sportName",
-                   Value = txtEventNameSearch.Text
-                });
+                                "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID " +
+                                "where s.sportname like'%'+@SportName+'%' or e.EventName like '%'+@SportName+'%'";
 
-                var searchedEventDataTable = databaseService.ExecuteSelectQueryWithOptions(startupEvent, sqlParameters);
+                var sqlParam = new {SportName = txtEventNameSearch.Text};
+                
+
+                var searchedEventDataTable = databaseService.ExecuteSelectWithOptionDapper(startupEvent, sqlParam);
                 if (searchedEventDataTable != null)
                 {
-                    dataGrid.ItemsSource= null;
-                    List<EventsList> events = new List<EventsList>();
-                    for (int i = 0; i < searchedEventDataTable.Rows.Count; i++)
+                    dataGrid.ItemsSource = null;
+                    List<EventsList> events = searchedEventDataTable.Select(c => new EventsList
                     {
-                        events.Add(new EventsList
-                        {
-                            EventName = searchedEventDataTable.Rows[i]["EventName"].ToString(),
-                            EventCode = searchedEventDataTable.Rows[i]["EventCode"].ToString(),
-                            SportName = searchedEventDataTable.Rows[i]["SportName"].ToString(),
-                            Gender = searchedEventDataTable.Rows[i]["Gender"].ToString(),
-                            Status = searchedEventDataTable.Rows[i]["Status"].ToString()
-                        });
-                    }
+                        Gender = c.Gender,
+                        EventName = c.EventName,
+                        Status = c.Status,
+                        EventCode = c.EventCode,
+                        SportName = c.SportName
+                    }).ToList();
+
                     dataGrid.ItemsSource = events;
                 }
             }
@@ -96,7 +83,7 @@ namespace OVR
             {
                 this.LoadCurrentEvent();
             }
-           
+
         }
 
         private void btnNewEvent_Click(object sender, RoutedEventArgs e)

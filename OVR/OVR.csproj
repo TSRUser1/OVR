@@ -149,6 +149,7 @@
       <DependentUpon>Contigent.xaml</DependentUpon>
     </Compile>
     <Compile Include="CSVLibraryAK.cs" />
+    <Compile Include="DataClass\Event.cs" />
     <Compile Include="DataClass\EventsList.cs" />
     <Compile Include="DataClass\Contigent.cs" />
     <Compile Include="DataClass\Country.cs" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dapper;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,7 +13,9 @@ namespace OVR.Service
 {
     public class DatabaseService
     {
-        private readonly SqlConnection sqlCon = new SqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
+        private readonly SqlConnection sqlCon = new SqlConnection(connectionString);
         public DataTable ExecuteSelectQuery(string query)
         {
             try
@@ -50,6 +54,87 @@ namespace OVR.Service
                 sqlCon.Close();
 
                 return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public List<dynamic> ExecuteSelectWithDapper(string query)
+        {
+            try
+            {
+
+                var result = new List<dynamic>();
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    result = connection.Query<dynamic>(query).ToList();
+                    connection.Close();
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<dynamic> ExecuteSelectWithOptionDapper(string query, object paramObject)
+        {
+            try
+            {
+
+                var result = new List<dynamic>();
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    result = connection.Query<dynamic>(query, paramObject).ToList();
+                    connection.Close();
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public object ExecuteQueryWithParamDapper(string query, object paramObject)
+        {
+            try
+            {
+                var result = new object();
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    result = connection.Execute(query, paramObject);
+                    connection.Close();
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public void ExecuteBulkInsertWithDapper(List<object> bulkObjects)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    connection.InsertBulk(bulkObjects);
+                    connection.Close();
+                }
             }
             catch (Exception)
             {
