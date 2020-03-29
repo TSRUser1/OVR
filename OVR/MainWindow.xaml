@@ -28,6 +28,7 @@
             <MenuItem Header="View">
                 <MenuItem x:Name="ViewEvents" Header="View Events" Click="MnuViewEvents_Click"></MenuItem>
                 <MenuItem x:Name="ViewContigent" Header="View Contigent" Click="MnuViewContigent_Click"></MenuItem>
+                <MenuItem x:Name="ViewParticipant" Header="View Participant" Click="MnuViewParticipant_Click"></MenuItem>
                 <MenuItem x:Name="ViewVenues" Header="View Venues" Click="MnuViewVenues_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Setup">
@@ -46,9 +47,6 @@
                 <MenuItem x:Name="Meet_Properties" Header="Meet Properties"></MenuItem>
 
 
-            </MenuItem>
-            <MenuItem x:Name="Athletes" Header="Athletes">
-                <MenuItem x:Name="Participant" Header="Participant" Click="MnuParticpant_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="Reports">
                 <MenuItem x:Name="Medals" Header="Medals">

@@ -18,11 +18,11 @@ namespace OVR
     /// <summary>
     /// Interaction logic for EventListing.xaml
     /// </summary>
-    public partial class EventListing : Page
+    public partial class ListEvent : Page
     {
         DatabaseService databaseService = new DatabaseService();
 
-        public EventListing()
+        public ListEvent()
         {
             InitializeComponent();
             this.LoadCurrentEvent();

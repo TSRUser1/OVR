@@ -94,14 +94,14 @@ namespace OVR
 
         private void MnuEvents_Click(object sender, RoutedEventArgs e)
         {
-            EventListing ev = new EventListing();
+            ListEvent ev = new ListEvent();
             pageRenderService.RenderPages(ev, _tabItems, tabDynamic);
 
         }
 
         private void MnuViewEvents_Click(object sender, RoutedEventArgs e)
         {
-            EventListing ve = new EventListing();
+            ListEvent ve = new ListEvent();
             pageRenderService.RenderPages(ve, _tabItems, tabDynamic);
 
         }
@@ -125,10 +125,11 @@ namespace OVR
 
         }
 
-        private void MnuParticpant_Click(object sender, RoutedEventArgs e)
+        private void MnuViewParticipant_Click(object sender, RoutedEventArgs e)
         {
-            Participant pp = new Participant();
-            pageRenderService.RenderPages(pp, _tabItems, tabDynamic);
+            ListParticipant lp = new ListParticipant();
+            pageRenderService.RenderPages(lp, _tabItems, tabDynamic);
+
         }
 
         private void MnuViewContigent_Click(object sender, RoutedEventArgs e)
@@ -182,7 +183,7 @@ namespace OVR
                     {
                         // clear tab control binding
                         tabDynamic.Items.Clear();
-                        foreach(var tabItem in _tabItems)
+                        foreach (var tabItem in _tabItems)
                         {
                             tabDynamic.Items.Add(tabItem);
                         }
@@ -198,7 +199,7 @@ namespace OVR
                     {
                         tabDynamic.Items.Clear();
                     }
-                    
+
 
 
                 }

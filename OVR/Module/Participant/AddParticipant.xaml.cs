@@ -21,10 +21,10 @@ namespace OVR
     /// <summary>
     /// Interaction logic for Participant.xaml
     /// </summary>
-    public partial class Participant : Page
+    public partial class AddParticipant : Page
     {
         SqlConnection sqlcon = null;
-        public Participant()
+        public AddParticipant()
         {
             InitializeComponent();
             var x = ConfigurationManager.AppSettings["connectionString"];

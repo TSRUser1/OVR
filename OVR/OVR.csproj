@@ -149,13 +149,14 @@
       <DependentUpon>Contigent.xaml</DependentUpon>
     </Compile>
     <Compile Include="CSVLibraryAK.cs" />
+    <Compile Include="DataClass\Lookup.cs" />
     <Compile Include="DataClass\Event.cs" />
     <Compile Include="DataClass\EventsList.cs" />
     <Compile Include="DataClass\Contigent.cs" />
     <Compile Include="DataClass\Country.cs" />
     <Compile Include="DataClass\ParticipantData.cs" />
-    <Compile Include="EventListing.xaml.cs">
-      <DependentUpon>EventListing.xaml</DependentUpon>
+    <Compile Include="Module\Event\ListEvent.xaml.cs">
+      <DependentUpon>ListEvent.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExportData.cs" />
     <Compile Include="ExportData.xaml.cs">
@@ -188,10 +189,13 @@
     <Compile Include="ImportParticipant.xaml.cs">
       <DependentUpon>ImportParticipant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Participant.xaml.cs">
-      <DependentUpon>Participant.xaml</DependentUpon>
+    <Compile Include="Module\Participant\AddParticipant.xaml.cs">
+      <DependentUpon>AddParticipant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ParticipantReport.xaml.cs">
+    <Compile Include="Module\Participant\ListParticipant.xaml.cs">
+      <DependentUpon>ListParticipant.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Participant\ParticipantReport.xaml.cs">
       <DependentUpon>ParticipantReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scheduler.xaml.cs">
@@ -210,23 +214,23 @@
     <Compile Include="Venues.xaml.cs">
       <DependentUpon>Venues.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModule\ViewEvent.xaml.cs">
+    <Compile Include="Module\Event\ViewEvent.xaml.cs">
       <DependentUpon>ViewEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModule\ViewContigent.xaml.cs">
+    <Compile Include="Module\Contingent\ViewContigent.xaml.cs">
       <DependentUpon>ViewContigent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModule\ViewParticipant.xaml.cs">
+    <Compile Include="Module\Participant\ViewParticipant.xaml.cs">
       <DependentUpon>ViewParticipant.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModule\ViewVenues.xaml.cs">
+    <Compile Include="Module\Venue\ViewVenues.xaml.cs">
       <DependentUpon>ViewVenues.xaml</DependentUpon>
     </Compile>
-    <Page Include="Event.xaml">
+    <Page Include="Module\Event\Event.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EventListing.xaml">
+    <Page Include="Module\Event\ListEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
@@ -262,7 +266,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Event.xaml.cs">
+    <Compile Include="Module\Event\Event.xaml.cs">
       <DependentUpon>Event.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
@@ -276,11 +280,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Participant.xaml">
+    <Page Include="Module\Participant\AddParticipant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ParticipantReport.xaml">
+    <Page Include="Module\Participant\ListParticipant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Module\Participant\ParticipantReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,19 +308,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModule\ViewEvent.xaml">
+    <Page Include="Module\Event\ViewEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModule\ViewContigent.xaml">
+    <Page Include="Module\Contingent\ViewContigent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModule\ViewParticipant.xaml">
+    <Page Include="Module\Participant\ViewParticipant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewModule\ViewVenues.xaml">
+    <Page Include="Module\Venue\ViewVenues.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -401,6 +409,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Module\Shared\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
