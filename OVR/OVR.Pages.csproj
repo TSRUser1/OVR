@@ -149,12 +149,12 @@
       <DependentUpon>Contigent.xaml</DependentUpon>
     </Compile>
     <Compile Include="CSVLibraryAK.cs" />
-    <Compile Include="DataClass\Lookup.cs" />
-    <Compile Include="DataClass\Event.cs" />
-    <Compile Include="DataClass\EventsList.cs" />
-    <Compile Include="DataClass\Contigent.cs" />
-    <Compile Include="DataClass\Country.cs" />
-    <Compile Include="DataClass\ParticipantData.cs" />
+    <Compile Include="ViewModel\Lookup.cs" />
+    <Compile Include="ViewModel\Event.cs" />
+    <Compile Include="ViewModel\EventsList.cs" />
+    <Compile Include="ViewModel\Contigent.cs" />
+    <Compile Include="ViewModel\Country.cs" />
+    <Compile Include="ViewModel\ParticipantData.cs" />
     <Compile Include="Module\Event\ListEvent.xaml.cs">
       <DependentUpon>ListEvent.xaml</DependentUpon>
     </Compile>
@@ -205,7 +205,6 @@
       <DependentUpon>Select_Event.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service\PageRenderService.cs" />
-    <Compile Include="Service\DatabaseService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TabProperty.xaml.cs" />
     <Compile Include="TSR_Contigent.cs">
@@ -412,6 +411,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Module\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OVR.Core\OVR.Core.csproj">
+      <Project>{d1ea187c-5c55-4492-9cac-b9e7d7676cff}</Project>
+      <Name>OVR.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
