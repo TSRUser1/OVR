@@ -34,20 +34,12 @@ namespace OVR
             var startupEvent = " Select e.EventName, e.EventCode, s.SportName, case e.GenderId when 0 then 'Female' else 'Male' end as Gender," +
                                 "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID";
 
-            var eventDataTable = databaseService.ExecuteSelectWithDapper(startupEvent);
+            var eventDataTable = databaseService.ExecuteSelectWithDapper<EventsList>(startupEvent);
 
             if (eventDataTable != null)
-            {
-                List<EventsList> events = eventDataTable.Select(c => new EventsList
-                {
-                    Gender = c.Gender,
-                    EventName = c.EventName,
-                    Status = c.Status,
-                    EventCode = c.EventCode,
-                    SportName = c.SportName
-                }).ToList();
+            { 
 
-                dataGrid.ItemsSource = events;
+                dataGrid.ItemsSource = eventDataTable;
             }
 
         }
@@ -63,20 +55,11 @@ namespace OVR
                 var sqlParam = new {SportName = txtEventNameSearch.Text};
                 
 
-                var searchedEventDataTable = databaseService.ExecuteSelectWithOptionDapper(startupEvent, sqlParam);
+                var searchedEventDataTable = databaseService.ExecuteSelectWithOptionDapper<EventsList>(startupEvent, sqlParam);
                 if (searchedEventDataTable != null)
                 {
                     dataGrid.ItemsSource = null;
-                    List<EventsList> events = searchedEventDataTable.Select(c => new EventsList
-                    {
-                        Gender = c.Gender,
-                        EventName = c.EventName,
-                        Status = c.Status,
-                        EventCode = c.EventCode,
-                        SportName = c.SportName
-                    }).ToList();
-
-                    dataGrid.ItemsSource = events;
+                    dataGrid.ItemsSource = searchedEventDataTable;
                 }
             }
             else

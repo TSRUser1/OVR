@@ -49,11 +49,11 @@
                               AlternationCount="2"    
                                   
                               Background="{x:Null}"                           
-                              BorderBrush="{x:Null}" Margin="14,66,20,163"/>
-        <Button Content="Export Data" HorizontalAlignment="Left" Margin="219,387,0,0" VerticalAlignment="Top" Width="123" Height="43" FontSize="19" Click="BtnExpData_Click"/>
-        <Button Content="Check Data" x:Name="BtnBrowse" HorizontalAlignment="Left" Margin="15,306,0,0" VerticalAlignment="Top" Width="75" Click="BtnBrowse_Click" RenderTransformOrigin="0.491,10.544"/>
-        <Label Content="Export Path :" HorizontalAlignment="Left" Margin="16,347,0,0" VerticalAlignment="Top" Height="34" Width="75" RenderTransformOrigin="0.504,0.715"/>
-        <TextBox x:Name="txtfilename" HorizontalAlignment="Left" Height="37" Margin="92,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="504"/>
+                              BorderBrush="{x:Null}" Margin="10,71,24,158"/>
+        <Button Content="Export Data" HorizontalAlignment="Left" Margin="92,412,0,0" VerticalAlignment="Top" Width="120" Height="30" FontSize="19" Click="BtnExpData_Click"/>
+        <Button Content="..." x:Name="BtnBrowse" HorizontalAlignment="Left" Margin="601,364,0,0" VerticalAlignment="Top" Width="30" Click="BtnBrowse_Click" RenderTransformOrigin="0.491,10.544" Height="37"/>
+        <Label Content="Export Path :" HorizontalAlignment="Left" Margin="16,369,0,0" VerticalAlignment="Top" Height="34" Width="75" RenderTransformOrigin="0.504,0.715"/>
+        <TextBox x:Name="txtfilename" HorizontalAlignment="Left" Height="37" Margin="92,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="504"/>
 
     </Grid>
 </Page>

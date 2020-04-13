@@ -1,5 +1,4 @@
-﻿using CSVLibraryAK.Resources.Constants;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CSVLibraryAK;
 using Microsoft.Win32;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -25,6 +23,8 @@ using ExcelLibrary.SpreadSheet;
 using ExcelLibrary.BinaryDrawingFormat;
 using System.Windows.Forms;
 using ExcelDataReader;
+using OVR.Service;
+using OVR.DataClass;
 
 namespace OVR
 {
@@ -33,34 +33,21 @@ namespace OVR
     /// </summary>
     public partial class ExportData : Page
     {
-        SqlConnection sqlcon = null;
-        List<ExportDatatest> ExportDatatests = new List<ExportDatatest>();
-       
-        //string expfile = @"C:\Users\hp\Desktop\TEST.xls";
-        private DataTable dataTableObj = new DataTable();
+        private string fileSelectedPath = "";
+        private DatabaseService databaseService = new DatabaseService();
+        private CsvGeneratorService csvGeneratorService = new CsvGeneratorService();
         public ExportData()
         {
             InitializeComponent();
-            var x = ConfigurationManager.AppSettings["connectionString"];
-            sqlcon = new SqlConnection(x);
+            LoadGrid();
 
         }
-        string filenamevalue = "";
+        
         
         private void BtnExpData_Click(object sender, RoutedEventArgs e)
         {
 
-            grdLoad.SelectAllCells();
-            grdLoad.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
-            ApplicationCommands.Copy.Execute(null, grdLoad);
-            grdLoad.UnselectAllCells();
-            String result = (string)System.Windows.Clipboard.GetData(System.Windows.DataFormats.CommaSeparatedValue);
-            File.AppendAllText(filenamevalue, result, UnicodeEncoding.UTF8);
-            System.Windows.MessageBox.Show("Data Export Successfully");
-            MainWindow win = new MainWindow();
-            win.Show();//Open previouse page
-            Window sc = (Window)this.Parent;
-            sc.Close();
+            csvGeneratorService.WriteCsvFile(txtfilename.Text, grdLoad.Items);
 
         }
         //DataTableCollection tableCollection;
@@ -71,42 +58,13 @@ namespace OVR
                 // Initialization.  
                 //OpenFileDialog browseDialog = new OpenFileDialog();
                 DataTable datatable = new DataTable();
-                using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog() { Filter = "All files (*.*)|*.*|csv files (*.csv)|*.csv"})
+                using (FolderBrowserDialog openFileDialog = new FolderBrowserDialog())
                 {
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        txtfilename.Text = openFileDialog.FileName;
-                        filenamevalue = txtfilename.Text;
-                        //using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
-                        //{
-                        //    using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
-                        //    {
-                        //        DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
-                        //        {
-                        //            ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
-
-                        //        });
-                        //        tableCollection = result.Tables;
-                        //        //CboSheet.Items.Clear();
-                        //        //foreach (DataTable table in tableCollection)
-                        //        //    CboSheet.Items.Add(table.TableName);
-                        //    }
-                        //}
+                        fileSelectedPath = openFileDialog.SelectedPath;
                     }
                 }
-
-
-                sqlcon.Open();
-                    string query1 = "SELECT * FROM [Country]";
-                    SqlCommand sqlcmd1 = new SqlCommand(query1, sqlcon);
-
-                    sqlcmd1.ExecuteNonQuery();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlcmd1);
-                    DataTable dt2 = new DataTable("Country");
-                    dataAdapter.Fill(dt2);
-                     grdLoad.ItemsSource = dt2.DefaultView;
-                sqlcon.Close();
-
             }
             catch (Exception ex)
             {
@@ -116,7 +74,16 @@ namespace OVR
             }
         }
 
+        private void LoadGrid()
+        {
 
+            var startupEvent = " Select e.EventName, e.EventCode, s.SportName, case e.GenderId when 0 then 'Female' else 'Male' end as Gender," +
+                                "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID ";
+
+            var eventList = databaseService.ExecuteSelectWithDapper<EventsList>(startupEvent);
+
+            grdLoad.ItemsSource = eventList;
+        }
     
     }
 }

@@ -37,9 +37,18 @@
     <Reference Include="DapperPlus, Version=1.1.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DapperPlus.1.1.0.2\lib\net45\DapperPlus.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,9 +58,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\SemContext.cs" />
     <Compile Include="Service\DatabaseService.cs" />
+    <Compile Include="Entities\T_AdminUser.cs" />
+    <Compile Include="Entities\T_AdminUserInRole.cs" />
+    <Compile Include="Entities\T_Country.cs" />
+    <Compile Include="Entities\T_DataGridColumn.cs" />
+    <Compile Include="Entities\T_Email.cs" />
+    <Compile Include="Entities\T_EmailAttachment.cs" />
+    <Compile Include="Entities\T_Event.cs" />
+    <Compile Include="Entities\T_File.cs" />
+    <Compile Include="Entities\T_FileInEvent.cs" />
+    <Compile Include="Entities\T_InitialRecord.cs" />
+    <Compile Include="Entities\T_League.cs" />
+    <Compile Include="Entities\T_LeagueInParticipantInEvent.cs" />
+    <Compile Include="Entities\T_Module.cs" />
+    <Compile Include="Entities\T_ModuleInRole.cs" />
+    <Compile Include="Entities\T_Participant.cs" />
+    <Compile Include="Entities\T_ParticipantInEvent.cs" />
+    <Compile Include="Entities\T_ParticipantInSchedule.cs" />
+    <Compile Include="Entities\T_ParticipatingCountry.cs" />
+    <Compile Include="Entities\T_Referee.cs" />
+    <Compile Include="Entities\T_Reference.cs" />
+    <Compile Include="Entities\T_ReferenceCategory.cs" />
+    <Compile Include="Entities\T_Result.cs" />
+    <Compile Include="Entities\T_Role.cs" />
+    <Compile Include="Entities\T_Schedule.cs" />
+    <Compile Include="Entities\T_Score.cs" />
+    <Compile Include="Entities\T_ScoreInParticipantInSchedule.cs" />
+    <Compile Include="Entities\T_ScoreName.cs" />
+    <Compile Include="Entities\T_Sport.cs" />
+    <Compile Include="Entities\T_SportClass.cs" />
+    <Compile Include="Entities\T_StartListName.cs" />
+    <Compile Include="Entities\T_Statistic.cs" />
+    <Compile Include="Entities\T_StatisticName.cs" />
+    <Compile Include="Entities\T_Team.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

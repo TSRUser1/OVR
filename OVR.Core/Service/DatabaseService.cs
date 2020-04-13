@@ -62,16 +62,16 @@ namespace OVR.Service
 
         }
 
-        public List<dynamic> ExecuteSelectWithDapper(string query)
+        public List<type> ExecuteSelectWithDapper<type>(string query)
         {
             try
             {
 
-                var result = new List<dynamic>();
+                var result = new List<type>();
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    result = connection.Query<dynamic>(query).ToList();
+                    result = connection.Query<type>(query).ToList();
                     connection.Close();
                 }
 
@@ -83,16 +83,16 @@ namespace OVR.Service
             }
         }
 
-        public List<dynamic> ExecuteSelectWithOptionDapper(string query, object paramObject)
+        public List<type> ExecuteSelectWithOptionDapper<type>(string query, object paramObject)
         {
             try
             {
 
-                var result = new List<dynamic>();
+                var result = new List<type>();
                 using (var connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    result = connection.Query<dynamic>(query, paramObject).ToList();
+                    result = connection.Query<type>(query, paramObject).ToList();
                     connection.Close();
                 }
 
