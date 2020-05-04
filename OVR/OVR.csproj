@@ -66,6 +66,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>-->
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.15.0.4\lib\net47\CsvHelper.dll</HintPath>
     </Reference>
@@ -159,6 +162,12 @@
     </ApplicationDefinition>
     <Compile Include="Contigent.xaml.cs">
       <DependentUpon>Contigent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Testing.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Testing.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Service\CsvGeneratorService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -356,6 +365,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Testing.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Testing.cs</LastGenOutput>
+    </EmbeddedResource>
     <EntityDeploy Include="Exportdatamodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Exportdatamodel.Designer.cs</LastGenOutput>
@@ -375,6 +388,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

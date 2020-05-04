@@ -8,10 +8,13 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using CsvHelper;
 using OVR.Core;
 
@@ -39,6 +42,16 @@ namespace OVR.Service
             {
                 csv.WriteRecords(writeObject);
             }
+
+            var assembly = Assembly.GetExecutingAssembly();
+            string resourceName = assembly.GetManifestResourceNames()
+  .Single(str => str.EndsWith("Testing.rpt"));
+
+            var something = assembly.GetManifestResourceInfo(resourceName);
+
+            ReportDocument Cr = new ReportDocument();
+            Cr.Load(@"C:\ABODGit\OVR\OVR\Reports\Testing.rpt");
+            Cr.ExportToDisk(ExportFormatType.PortableDocFormat, @"C:\diu\shitty.pdf");
         }
 
         //public static DataTable ToDataTable<T>(this IList<T> data)

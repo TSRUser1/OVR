@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media;
 using Z.Dapper.Plus;
 
 namespace OVR
@@ -83,8 +84,8 @@ namespace OVR
                                 "case e.IsActive when 0 then 'Inactive' else 'Active' end as Status from TSR_Event e join TSR_Sport s on e.SportID = s.SportID " +
                                 "where s.sportname like'%'+@SportName+'%' or e.EventName like '%'+@SportName+'%'";
 
-                var sqlParam = new {SportName = txtEventNameSearch.Text};
-                
+                var sqlParam = new { SportName = txtEventNameSearch.Text };
+
 
                 var searchedEventDataTable = databaseService.ExecuteSelectWithOptionDapper<EventsList>(startupEvent, sqlParam);
                 if (searchedEventDataTable != null)

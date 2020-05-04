@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OVR"
         mc:Ignorable="d"
-        Title="Volleyball" Height="613.757" Width="923.954">
+        Title="Volleyball" Height="600" Width="1024">
 
     <Grid Margin="0,0,0.333,-6.333">
         <Frame x:Name="_mainFrame"/>

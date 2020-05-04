@@ -14,7 +14,7 @@ namespace OVR.Service
     public class DatabaseService
     {
 
-        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["Database"].ConnectionString;
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["SemContext"].ConnectionString;
         private readonly SqlConnection sqlCon = new SqlConnection(connectionString);
         public DataTable ExecuteSelectQuery(string query)
         {

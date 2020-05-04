@@ -10,6 +10,7 @@ namespace OVR.Core
         public SemContext()
             : base("name=SemContext")
         {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SemContext, Migrations.Configuration>());
         }
 
         public virtual DbSet<T_AdminUser> T_AdminUser { get; set; }
